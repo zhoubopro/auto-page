@@ -1,0 +1,103 @@
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td {
+  margin: 0;
+  padding: 0;
+}
+
+body, button, input, select, textarea {
+  font: 12px/1.5 'Microsoft YaHei', 'Helvetica', 'PingFangSC-Regular', tahoma, arial, \5b8b\4f53;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%;
+  font-weight: normal;
+}
+
+strong, b {
+  font-weight: normal;
+}
+
+address, cite, dfn, em, var, i {
+  font-style: normal;
+}
+
+code, kbd, pre, samp {
+  font-family: couriernew, courier, monospace;
+}
+
+small {
+  font-size: 12px;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: underline;
+}
+
+a:hover {
+  text-decoration: none
+}
+
+sup {
+  vertical-align: text-top;
+}
+
+sub {
+  vertical-align: text-bottom;
+}
+
+legend {
+  color: #000;
+}
+
+fieldset, img {
+  border: 0;
+}
+
+input, button, select, textarea {
+  outline: none
+}
+
+button, input, select, textarea {
+  font-size: 100%;
+  -webkit-appearance: none;
+  border: 0
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+div {
+  box-sizing: border-box;
+}
+
+span {
+  display: inline-block;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: none;
+}
+
+input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 100px white inset;
+  background: rgba(250, 255, 189, 0) none;
+  color: rgb(0, 0, 0);
+}
+
+input::-webkit-search-cancel-button {
+  display: none;
+}
+
+:focus {
+  outline: none;
+}
