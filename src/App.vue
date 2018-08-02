@@ -57,7 +57,4 @@ li {
 a {
   color: #42b983;
 }
-  .b{
-    color: red;
-  }
 </style>
