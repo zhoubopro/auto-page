@@ -57,4 +57,9 @@ li {
 a {
   color: #42b983;
 }
+
+
+a{
+background-size: auto;
+}
 </style>
