@@ -72,6 +72,8 @@
           style: style,
           // showModal:true
         })
+
+        console.log('create develop ')
       }
     }
   }
@@ -128,6 +130,5 @@
       border-bottom: none;
     }
   }
-
 
 </style>
