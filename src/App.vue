@@ -1,65 +1,133 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li><a href="http://router.vuejs.org/" target="_blank">vue-router</a></li>
-      <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
-      <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
-    </ul>
+    <button @click="print()">打印</button>
+    <autoPage/>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'app',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
+  import autoPage from '@/components/autoPage'
+  import Print from 'print-js'
+
+  export default {
+
+    name: 'app',
+    data() {
+      return {
+        msg: 'Table 表格打印 自动分页 '
+      }
+    },
+    components: {
+      autoPage
+    },
+    methods: {
+      print() {
+        const style = `
+        @page { size: landscape; margin: 0mm 2mm }
+        @media print {
+          .hb-auto-page-print {
+            display: block;
+            opacity: 1;
+          }
+          .hb-auto-page-print table tr{
+            border: none;
+          }
+          .hb-auto-page-print table tr.tbody-title td{
+            background:#D8D8D8;
+            background-size: 100%;
+          }
+          .hb-auto-page-print table tr td{
+            border-top: 1px solid #000000;
+            border-left: 1px solid #000000;
+            background: #ffffff;
+          }
+          .hb-auto-page-print table tr td:last-child{
+            border-right: 1px solid #000000;
+          }
+          .hb-auto-page-print .cell-padding{
+            padding: 0 10px;
+          }
+          .hb-auto-page-print table tbody~tbody tr.tbody-title td{
+            border-top: none;
+          }
+          .hb-auto-page-print table tr:not(.tbody-title) td.td-border{
+            border-bottom: 1px solid #000000;
+          }
+          .hb-auto-page-print table tbody tr td.td-border{
+            border-bottom: none;
+          }
+          .hb-auto-page-print table tbody tr:nth-last-of-type(1) td{
+            border-bottom: none;
+          }
+        }`
+
+        Print({
+          printable: 'hb-auto-page-print',
+          noPrintSelector: "no-print",
+          type: 'html',
+          scanStyles: false,
+          mediaPrint: true,
+          // css: './assets/css/print.css'
+          // iframe : false,
+          style: style,
+          // showModal:true
+        })
+      }
     }
   }
-}
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 
-h1, h2 {
-  font-weight: normal;
-}
+  @page {
+    size: landscape;
+    margin: 0mm 2mm
+  }
 
-ul {
-  list-style-type: none;
-  padding: 0;
-}
+  @media print {
+    .hb-auto-page-print {
+      display: block;
+      opacity: 1;
+    }
 
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
+    .hb-auto-page-print table tr {
+      border: none;
+    }
 
-a {
-  color: #42b983;
-}
+    .hb-auto-page-print table tr.tbody-title td {
+      background-size: 100%;
+    }
+
+    .hb-auto-page-print table tr td {
+      border-top: 1px solid #000000;
+      border-left: 1px solid #000000;
+      background: #ffffff;
+    }
+
+    .hb-auto-page-print table tr td:last-child {
+      border-right: 1px solid #000000;
+    }
+
+    .hb-auto-page-print .cell-padding {
+      padding: 0 10px;
+    }
+
+    .hb-auto-page-print table tbody ~ tbody tr.tbody-title td {
+      border-top: none;
+    }
+
+    .hb-auto-page-print table tr:not(.tbody-title) td.td-border {
+      border-bottom: 1px solid #000000;
+    }
+
+    .hb-auto-page-print table tbody tr td.td-border {
+      border-bottom: none;
+    }
+
+    .hb-auto-page-print table tbody tr:nth-last-of-type(1) td {
+      border-bottom: none;
+    }
+  }
 
 
-a{
-background-size: auto;
-}
 </style>

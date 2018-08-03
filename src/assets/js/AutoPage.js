@@ -16,7 +16,7 @@ let AutoPage = {
     //初始化分页信息
     this.initPage()
     //隐藏初始表格
-    this.hiddenContent()
+    // this.hiddenContent()
   },
 
   initPage() {
@@ -108,7 +108,7 @@ let AutoPage = {
     let htmlFooter =
       `<tfoot>
         <tr>
-          <td colspan="11" align="left" style="height: 150px;border: none;">
+          <td colspan="11" align="left" style="height: 100px;border: none;">
             &nbsp;
           </td>
         </tr>
@@ -137,7 +137,7 @@ let AutoPage = {
     return htmlFooter
   },
   hiddenContent(){
-    document.getElementById('page-0').style.display = 'none'
+    // document.getElementById('page-0').style.display = 'none'
   },
   ////添加分页符
   addPageBreak: function () {
@@ -145,7 +145,7 @@ let AutoPage = {
   },
   setApprovalID(id){
     document.querySelectorAll('.approval-id').forEach((object, index)=>{
-      object.innerText = id
+      object.innerText = 'ZJSP1808020001'
     })
   }
 }
