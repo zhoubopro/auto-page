@@ -24,35 +24,35 @@ let AutoPage = {
     let tbodyList = this.tableId.querySelectorAll('tbody')
     this.totalRecord = tbodyList.length //初始化总记录数
 
-    let height_tmp = 0 //一页总高度
-    let html_tmp = "";  //临时存储正文
+    let heightTmp = 0 //一页总高度
+    let htmlTmp = "";  //临时存储正文
     let headerHeight = 90
     let htmlHeader = "<table cellspacing='0' cellpadding='0'>";
     let htmlFoot = "</table>";
     let page = 0
-    height_tmp = headerHeight;
+    heightTmp = headerHeight;
     for(let i = 0; i < this.totalRecord; i++){
       let tbodyHeight = tbodyList[i].clientHeight;//第i行高度
       let tbodyHTML = "<tbody>" + tbodyList[i].innerHTML + "</tbody>";//第i行内容
-      height_tmp += tbodyHeight;
-      if(height_tmp < this.totalHeight){
-        if(height_tmp == headerHeight + tbodyHeight){
-          html_tmp += htmlHeader + this.initHeader(page)
+      heightTmp += tbodyHeight;
+      if(heightTmp < this.totalHeight){
+        if(heightTmp == headerHeight + tbodyHeight){
+          htmlTmp += htmlHeader + this.initHeader(page)
           page++;//页码
         }
-        html_tmp += tbodyHTML
+        htmlTmp += tbodyHTML
         if (i == this.totalRecord - 1) {
-          html_tmp += this.initFooter() + htmlFoot
+          htmlTmp += this.initFooter() + htmlFoot
         }
       }
       else{
-        html_tmp += this.initFooter() + htmlFoot + this.addPageBreak();
+        htmlTmp += this.initFooter() + htmlFoot + this.addPageBreak();
         i--;
-        height_tmp = headerHeight;
+        heightTmp = headerHeight;
       }
     }
 
-    document.getElementById(this.divID).innerHTML = html_tmp
+    document.getElementById(this.divID).innerHTML = htmlTmp
     document.querySelectorAll('.total-page').forEach((object, index)=>{
       object.innerText = page
     })
